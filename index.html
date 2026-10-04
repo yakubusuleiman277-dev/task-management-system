@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TaskFlow</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-icon">✓</div>
+          <div>
+            <p class="eyebrow">Productivity</p>
+            <h1>TaskFlow</h1>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="Task filters">
+          <button class="nav-item active" data-filter="all" type="button">
+            <span>All Tasks</span>
+            <small id="nav-all">0</small>
+          </button>
+          <button class="nav-item" data-filter="pending" type="button">
+            <span>Pending</span>
+            <small id="nav-pending">0</small>
+          </button>
+          <button class="nav-item" data-filter="completed" type="button">
+            <span>Completed</span>
+            <small id="nav-completed">0</small>
+          </button>
+          <button class="nav-item" data-filter="overdue" type="button">
+            <span>Overdue</span>
+            <small id="nav-overdue">0</small>
+          </button>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Dashboard</p>
+            <h2>My Tasks</h2>
+          </div>
+          <button id="clearCompletedBtn" class="secondary-btn" type="button">Clear Completed</button>
+        </header>
+
+        <section class="stats-grid" aria-label="Task summary">
+          <div class="stat-card">
+            <span>Total Tasks</span>
+            <strong id="totalTasks">0</strong>
+          </div>
+          <div class="stat-card">
+            <span>Pending</span>
+            <strong id="pendingTasks">0</strong>
+          </div>
+          <div class="stat-card">
+            <span>Completed</span>
+            <strong id="completedTasks">0</strong>
+          </div>
+          <div class="stat-card">
+            <span>Overdue</span>
+            <strong id="overdueTasks">0</strong>
+          </div>
+        </section>
+
+        <section class="task-form-panel" aria-labelledby="formTitle">
+          <form id="taskForm">
+            <div class="form-header">
+              <h3 id="formTitle">Add New Task</h3>
+              <button type="button" id="cancelEditBtn" class="text-btn hidden">Cancel</button>
+            </div>
+
+            <div class="form-grid">
+              <label class="field">
+                <span>Task Title</span>
+                <input type="text" id="title" placeholder="e.g. Finish project report" required />
+              </label>
+
+              <label class="field">
+                <span>Category</span>
+                <select id="category">
+                  <option value="General">General</option>
+                  <option value="Work">Work</option>
+                  <option value="Personal">Personal</option>
+                  <option value="Study">Study</option>
+                  <option value="Health">Health</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span>Priority</span>
+                <select id="priority">
+                  <option value="Low">Low</option>
+                  <option value="Medium" selected>Medium</option>
+                  <option value="High">High</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span>Due Date</span>
+                <input type="date" id="dueDate" />
+              </label>
+
+              <label class="field full-width">
+                <span>Description</span>
+                <textarea id="description" rows="3" placeholder="Add a short description..."></textarea>
+              </label>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" id="submitBtn" class="primary-btn">Add Task</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="tasks-panel" aria-labelledby="tasksHeader">
+          <div class="tasks-header">
+            <h3 id="tasksHeader">Tasks List</h3>
+            <div class="task-controls" aria-label="Quick filters">
+              <button class="filter-toggle active" data-quickfilter="all" type="button">All</button>
+              <button class="filter-toggle" data-quickfilter="pending" type="button">Pending</button>
+              <button class="filter-toggle" data-quickfilter="completed" type="button">Completed</button>
+            </div>
+          </div>
+
+          <div id="taskList" class="task-list" aria-live="polite"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
